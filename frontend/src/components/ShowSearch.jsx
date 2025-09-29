@@ -27,11 +27,9 @@ const ShowSearch = () => {
           <input
             type="text"
             value={search}
-            onChange={(e) => {
-              e.target.value;
-            }}
+            onChange={(e) => setSearch(e.target.value)}
             placeholder="Search here...."
-            className="border-none outline-none w-fill
+            className="border-none outline-none w-full
              bg-white text-sm"
           />
           <div className="bg-white text-center">
