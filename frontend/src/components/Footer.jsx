@@ -31,7 +31,7 @@ const Footer = () => {
             <FaMailBulk />
             <div>
               <h5 className="h5">Email Support</h5>
-              <p>info@outfiro.com</p>
+              <p>info@elanwear.com</p>
             </div>
           </div>
         </div>
