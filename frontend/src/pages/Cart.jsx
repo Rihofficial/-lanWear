@@ -5,6 +5,7 @@ import { FaRegWindowClose } from "react-icons/fa";
 import { FaMinus, FaPlus } from "react-icons/fa6";
 import Title from "../components/Title";
 import CartTotal from "../components/CartTotal";
+import Footer from "../components/Footer";
 
 const Cart = () => {
   const {
@@ -126,13 +127,15 @@ const Cart = () => {
               );
             })}
           </div>
-          <div>
-            <div>
-              <CartTotal/>
+          <div className="flex my-20">
+            <div className="w-full sm:w-[450px]">
+              <CartTotal />
+              <button onClick={()=>navigate('/place-oder')} className="btn-secondary mt-7">Proceed to checkout</button>
             </div>
           </div>
         </div>
       </div>
+      <Footer/>
     </div>
   );
 };

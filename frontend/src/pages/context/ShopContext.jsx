@@ -11,7 +11,7 @@ const ShopContextProvider = (props) => {
   const navigate = useNavigate();
   const [search, setSearch] = useState("");
   const [showSearch, setShowsearch] = useState(true);
-  const [token, setToken] = useState("");
+  const [token, setToken] = useState("dummy token");
   const [cartItems, setCartItems] = useState({});
 
   // adding items to cart

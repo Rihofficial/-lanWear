@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import Navbar from "./Navbar";
 import { FaBarsStaggered, FaRegCircleUser } from "react-icons/fa6";
 import { FaSearch } from "react-icons/fa";
@@ -8,14 +8,17 @@ import { RiUserLine } from "react-icons/ri";
 import { ShopContext } from "../pages/context/ShopContext";
 
 const Header = () => {
-  const {token, getCartCount}=useContext(ShopContext)
+  const { token, getCartCount, navigate } = useContext(ShopContext);
   const [menuOpened, setMenuOpened] = useState(false);
   const toggleMenu = () => {
     setMenuOpened((prev) => !prev);
   };
+  const logout = () => {
+    
+  }
 
   return (
-    <header className="max-padd-container  w-full z-50">
+    <header className="max-padd-container  w-full ">
       <div className="flexBetween py-3">
         {/* Logo Left side  */}
         <Link to={"/"} className="flex-1 flex">
@@ -44,7 +47,7 @@ const Header = () => {
           {/* search icon */}
           <FaSearch className="text-lg cursor-pointer" />
           {/* cart */}
-          <Link to={'/cart'} className=" flex relative">
+          <Link to={"/cart"} className=" flex relative">
             <TbBasket className="text-[27px]" />
             <span className="bg-secondary text-white text-[12px] font-semibold absolute left-1.5 -top-3.5 flexCenter w-4 h-4 rounded-full shadow-md">
               {getCartCount()}
@@ -58,11 +61,31 @@ const Header = () => {
                   <TbUserCircle className="text-[29px] cursor-pointer" />
                 </div>
               ) : (
-                <button className=" btn-light flexCenter gap-x-2">
+                <button
+                  onClick={() => navigate("/login")}
+                  className=" btn-light flexCenter gap-x-2"
+                >
                   Login <RiUserLine className="text-xl" />
                 </button>
               )}
             </div>
+            {/* Dropdown */}
+            {token && (
+              <ul className="bg-white p-2 w-32 ring-1 ring-slate-900/5 rounded absolute right-0 top-7 hidden group-hover:flex flex-col regular-14 shadow-md z-50">
+                <li
+                  onClick={() => navigate("orders")}
+                  className="p-2 text-tertiary rounded-md hover:bg-primary cursor-pointer"
+                >
+                  Orders
+                </li>
+                <li
+                  onClick={logout}
+                  className="p-2 text-tertiary rounded-md hover:bg-primary cursor-pointer"
+                >
+                  Logout
+                </li>
+              </ul>
+            )}
           </div>
         </div>
       </div>
